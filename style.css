@@ -1,0 +1,20 @@
+body {
+	background-color: #abe5c8c8;
+	/* Her angiver du hex-koden for den ønskede farve */
+}
+
+
+/* Style vores tilbage-knap */
+.back-button {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #0175ac;
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	border-radius: 5px;
+}
+
+/* Når musen er over knappen */
+.back-button:hover {
+	background-color: #00419c;
+}
