@@ -16,7 +16,7 @@
         const width = 1000 - margin.left - margin.right;
         const height = 500 - margin.top - margin.bottom;
         // Hent data fra serveren
-        fetch('/electricity_rates')
+        fetch('https://wattsupapi.onrender.com/electricity_rates')
             .then(response => response.json())
             .then(data => {
                 // Opret skalaer for x- og y-aksen
