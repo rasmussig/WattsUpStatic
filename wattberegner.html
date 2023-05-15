@@ -8,6 +8,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .gif-animation {
+            width: 430px;
+            height: auto;
+            position: relative;
+            left: 0;
+            top: 0;
+            animation-name: move-right;
+            animation-duration: 3s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes move-right {
+            from {
+                left: 0;
+            }
+
+            to {
+                left: calc(85% - 200px);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -17,13 +40,13 @@
     <h1>Hvor lang tid skal Jonas Vingegaard cykle,
         og hvad koster det</h1>
     <form>
-        <label for="elektrisk-apparat-effekt">Elektrisk apparat i watt</label>
-        <input type="number" id="elektrisk-apparat-effekt" name="elektrisk-apparat-effekt" required><br>
-        <br>
-        <label for="tid">Tid i timer </label>
-        <input type="number" id="tid" name="tid" required><br>
-
-        <button type="submit">Beregn</button>
+        <h3><label for="elektrisk-apparat-effekt">Elektrisk apparat i watt</label>
+            <input type="number" id="elektrisk-apparat-effekt" name="elektrisk-apparat-effekt" required>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="tid">Tid i timer </label>
+            <input type="number" id="tid" name="tid" required>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit">Beregn</button>
     </form>
 
     <div id="resultat"></div>
@@ -58,24 +81,35 @@
             const resultatDiv = document.querySelector('#resultat');
             resultatDiv.innerHTML =
                 `<h2>Resultat</h2>
-          <p> Jonas Vingegaard skal cykle ${cyklingstidTimer} timer og ${cyklingstidMinutter} minutter for at holde dit apparat tændt på ${elektriskApparatEffekt} watt i ${tid} timer.</p>
-          <p>Det vil koste dig ${energiPris.toFixed(2)} kr. at holde dit apparat tændt på ${elektriskApparatEffekt} watt i ${tid} timer, den angivne energipris er ${energipris} kr. pr. kWh.</p>`;
+          <h2> Jonas Vingegaard skal cykle ${cyklingstidTimer} timer og ${cyklingstidMinutter} minutter for at holde dit apparat tændt.</h2>
+          
+            <h3>Det vil koste dig ${energiPris.toFixed(2)} kr. at holde dit apparat tændt på ${elektriskApparatEffekt} watt i timen i ${tid} timer, den angivne energipris er ${energipris} kr. pr. kWh.</h3>`;
+
         });
 
     </script>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="container">
+        <img class="gif-animation" src="img/vingegaard.gif" alt="Animated GIF">
+    </div>
 
+    <script>
+        function moveDown() {
+            var gif = document.querySelector('.gif-animation');
+            gif.style.top = "40px"; /* Juster denne værdi for at flytte GIF'en nedad */
+        }
 
-
+        moveDown(); // Kald moveDown-funktionen for at flytte GIF'en nedad ved indlæsning af siden
+    </script>
     <!--
+    ><br>20
+
         <p>Beregn dit Watt forbrug ved at gange Volt V (spænding) med Ampere A (strøm)</p>
-        -->
-
-
+        
     <p>Har du svært ved at finde den watt din enhed bruger men kan finde spænding i volt og din strøm i ampere. <br>
         Så kan du finde din watt ved at indtaste nedenfor i de to første bokse. <br>
-        I enstikkontakt er der en spænding på 230 volt og ude i el-skabet er der en sikring på 10 ampere.<br>
+        I enstikkontakt er der en spænding på 230 vo
+        lt og ude i el-skabet er der en sikring på 10 ampere.<br>
         Sikringen springer så snark man overskrider 2300 watt i forbrug 230V * 10A = 2300 W<br>
         Dette er OHM's lov til beregning af Watt</p>
 
@@ -104,7 +138,7 @@
             result.value = resultValue;
         }
     </script>
-
+-->
 
 </body>
 
