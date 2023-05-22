@@ -31,7 +31,7 @@
         const width = 1000 - margin.left - margin.right;
         const height = 500 - margin.top - margin.bottom;
         // Henter data fra PgA/API som json
-        fetch('/electricity_rates')
+        fetch('https://wattsupapi.onrender.com/electricity_rates')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Fejl ved hentning af data.');
@@ -39,8 +39,6 @@
                 return response.json()
             })
             .then(data => {
-                // Fjerner den midlertidige tekst, når data er blevet hentet
-                document.getElementById('chart').innerHTML = ''
                 // Opret skalaer for x- og y-aksen
                 // ScaleBand, da dataerne er kategoriske værdier
                 const x = d3.scaleBand()
