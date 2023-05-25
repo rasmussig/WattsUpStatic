@@ -607,18 +607,59 @@
             left: 40%;
             transform: translate(-50%, -50%);
             padding: 10px;
-            background-color: none;
-            border: 1px solid none;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 22px;
             width: 600px;
         }
+
 
         .circle15:hover+.textbox15 {
             display: block;
         }
 
         .circle15.active+.textbox15 {
+            display: block;
+        }
+    </style>
+
+    <style>
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Nunito', sans-serif;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+            
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #000;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .show {
             display: block;
         }
     </style>
@@ -635,21 +676,20 @@
     <div id="right-sidebar">
         <br>
         <h3>WATT BEREGNER</h3>
-        <p>Her kan du se vores super fede watt-beregner, hvor du kan tjekke hvad dine apparater bruger</p>
+        <p>Her kan du gå til vores watt-beregner, hvor du kan tjekke hvor meget dine apparater bruger</p>
         <a href="wattberegner.html">Watt beregner</a>
         <br><br>
         <h3>ELPRISER</h3>
-        <p>Her kan du se vores graf over elpriserne de sidste måneder</p>
+        <p>Tryk på grafen for mere info om elpriserne de seneste måneder</p>
         <a href="graf2.html">
             <img src="img/Graf.jpg" style="width: 250px;">
-          </a>
+        </a>
         <br>
         <h3>OM OS</h3>
-        <p> Denne fantastiske gruppe består af<Br>
-            Amelia<Br>
-            Søren<Br>
-            Rasmus<Br>
-            Jesper
+        <p> 10 tips til at spare på strømmen<Br><Br>
+            Information om baggrunden for hjemmesiden<Br>
+
+
         </p>
         <a href="info.html">Info</a>
     </div>
@@ -807,6 +847,42 @@
         });
     </script>
 
+
+
+    <div id="overlay" class="overlay">
+        <div class="box">
+            <a href="#" id="close" class="close">&times;</a>
+
+            <h1>Velkommen til Watt's up.</h1>
+            <h3>
+                Her kan du gå på opdagelse ved at hover <br>
+                over de forskellige el-apparater og se, hvor meget  <br>
+                de bruger af watt pr. time. Herudover kan du se, hvor langt <br>
+                Jonas Vingegaard skal cykle for at holde apparatet tændt en time. <br>
+
+
+
+
+            </h3>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("overlay").classList.add("show");
+        });
+
+        document.getElementById("close").addEventListener("click", function (e) {
+            e.preventDefault();
+            document.getElementById("overlay").classList.remove("show");
+        });
+
+        document.getElementById("overlay").addEventListener("click", function (e) {
+            if (e.target === this) {
+                document.getElementById("overlay").classList.remove("show");
+            }
+        });
+    </script>
 
 </body>
 

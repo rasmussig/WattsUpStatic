@@ -5,8 +5,8 @@
     <title>Electricity Rates</title>
     <script src="d3.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
 </head>
 </head>
@@ -30,7 +30,7 @@
         const width = 1000 - margin.left - margin.right;
         const height = 500 - margin.top - margin.bottom;
         // Henter data fra PgA/API som json
-        fetch('https://wattsupapi.onrender.com/electricity_rates')
+        fetch('/electricity_rates')
             .then(response => response.json())
             .then(data => {
                 // Opret skalaer for x- og y-aksen
@@ -40,7 +40,6 @@
                     .range([0, width])
                     .padding(0.2)
                     .align(0.5);
-
                 //Lineær skalering for y-aksen, da det er numeriske værdier
                 const y = d3.scaleLinear()
                     .domain([0, 240])
